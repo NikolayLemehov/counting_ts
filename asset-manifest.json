@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/counting2/static/css/main.073c9b0a.css",
-    "main.js": "/counting2/static/js/main.94b6b4c6.js",
-    "index.html": "/counting2/index.html",
-    "main.073c9b0a.css.map": "/counting2/static/css/main.073c9b0a.css.map",
-    "main.94b6b4c6.js.map": "/counting2/static/js/main.94b6b4c6.js.map"
+    "main.css": "/counting_ts/static/css/main.073c9b0a.css",
+    "main.js": "/counting_ts/static/js/main.94b6b4c6.js",
+    "index.html": "/counting_ts/index.html",
+    "main.073c9b0a.css.map": "/counting_ts/static/css/main.073c9b0a.css.map",
+    "main.94b6b4c6.js.map": "/counting_ts/static/js/main.94b6b4c6.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
