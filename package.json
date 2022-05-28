@@ -1,6 +1,6 @@
 {
   "homepage": "https://nikolaylemehov.github.io/counting_ts",
-  "name": "Counting_TS",
+  "name": "counting_ts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
