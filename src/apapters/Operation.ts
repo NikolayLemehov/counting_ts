@@ -10,8 +10,8 @@ export interface IRawOperation {
   writingDateTime: Date
 }
 
-export interface SendRawOperation {
-  id: string
+export interface ISendRawOperation {
+  _id: string
   date: Date
   value: number
 }
@@ -29,9 +29,9 @@ export default class Operation {
     }
   }
 
-  static getRawItem(data: IOperation): SendRawOperation {
+  static getRawItem(data: IOperation): ISendRawOperation {
     return {
-      id: data.id,
+      _id: data.id,
       date: new Date(data.date),
       value: data.value,
     }
