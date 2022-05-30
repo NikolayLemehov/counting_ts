@@ -3,7 +3,7 @@ import {IOperation} from "../types/operation";
 
 
 
-export interface RawOperation {
+export interface IRawOperation {
   _id: string
   date: Date
   value: number
@@ -17,7 +17,7 @@ export interface SendRawOperation {
 }
 
 export default class Operation {
-  static getAdoptedItem(raw: RawOperation): IOperation {
+  static getAdoptedItem(raw: IRawOperation): IOperation {
     return {
       id: raw._id,
       date: formatDate(raw.date),
@@ -37,7 +37,7 @@ export default class Operation {
     }
   }
 
-  static getAdoptedList(rawList: RawOperation[]): IOperation[] {
+  static getAdoptedList(rawList: IRawOperation[]): IOperation[] {
     const items = rawList.map(raw => Operation.getAdoptedItem(raw))
 
     return items.reduce((acc: IOperation[], it, i) => {

@@ -2,11 +2,11 @@ import {Dispatch} from "redux";
 import axios from "axios";
 import {OperationAction, OperationActionTypes} from "../../types/operation";
 import {URL_API} from "../../config";
-import Operation, {RawOperation} from "../../apapters/Operation";
+import Operation, {IRawOperation} from "../../apapters/Operation";
 
 interface IGetFetchOperations {
   message: string
-  operations: RawOperation[]
+  operations: IRawOperation[]
 }
 
 export const fetchOperations = () => {
