@@ -2,8 +2,6 @@ import {
   OperationAction,
   OperationActionTypes,
   IOperationState,
-  IOperation,
-  IOperationsAndOperation
 } from "../../types/operation";
 
 const initialState: IOperationState = {
@@ -44,10 +42,6 @@ export const operationReducer = (state: IOperationState = initialState, action: 
       return {...state, error: null}
     default: return state
   }
-}
-
-function addOperationSuccessCase(state: IOperationState, payload: IOperationsAndOperation): IOperationState {
-  return {...state, loading: false, error: null, operations: payload.operations}
 }
 
 function editOperationCase(state: IOperationState, payload: string): IOperationState {

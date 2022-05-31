@@ -6,6 +6,7 @@ import {BaseTextFieldProps} from "@mui/material/TextField/TextField";
 type MyTextFieldProps = {
   label: string,
   name: string,
+  fullWidth?: boolean
 }
 
 const MyTextField: React.FC<MyTextFieldProps> = (props) => {
@@ -13,7 +14,6 @@ const MyTextField: React.FC<MyTextFieldProps> = (props) => {
   const textFieldConfig: BaseTextFieldProps = {
     ...field,
     ...props,
-    fullWidth: true,
     variant: 'outlined'
   };
 

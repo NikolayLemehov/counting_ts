@@ -2,11 +2,9 @@ import React from 'react';
 import {Form, Formik, FormikHelpers, FormikValues} from "formik";
 import yup from "./validation"
 import MyTextField from "../MyTextField";
-import {useDispatch} from "react-redux";
-// import {addOperation} from "../../asyncAction/addOperation";
 import DatePicker from "../DatePicker";
 import {formatDate} from "../../utils/formatDate";
-import {Button, Stack} from "@mui/material";
+import {Button, Checkbox, FormControlLabel, Stack} from "@mui/material";
 import {useActions} from "../../hooks/useActions";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 
@@ -31,7 +29,6 @@ const MyForm: React.FC = () => {
   const onSubmit = (values: FormikValues, actions: FormikHelpers<IInitialValues>) => {
     const {date, value} = values
     addOperation({date, value: +value})
-    // dispatch(addOperation({date, value}))
     actions.resetForm({
       values: {
         value: '',
@@ -51,13 +48,18 @@ const MyForm: React.FC = () => {
             <MyTextField
               label="Value"
               name="value"
+              fullWidth={true}
             />
             <Stack spacing={2} direction="row">
               <DatePicker
                 label="Date"
                 name="date"
               />
-
+              {/*<MyTextField*/}
+              {/*  label="Rating"*/}
+              {/*  name="rating"*/}
+              {/*/>*/}
+              {/*<FormControlLabel control={<Checkbox defaultChecked />} label="NBU" />*/}
               <Button
                 type="submit"
                 variant="contained"

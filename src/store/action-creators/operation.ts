@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import axios from "axios";
-import {IOperation, OperationAction, OperationActionTypes} from "../../types/operation";
+import {OperationAction, OperationActionTypes} from "../../types/operation";
 import {URL_API} from "../../config";
 import Operation, {IRawOperation} from "../../apapters/Operation";
 
@@ -35,7 +35,7 @@ export const fetchOperations = () => {
           type: OperationActionTypes.FETCH_OPERATIONS_SUCCESS,
           payload: Operation.getAdoptedList(response.data.operations)
         })
-      }, 500)
+      }, 200)
     } catch (e) {
       dispatch({
         type: OperationActionTypes.FETCH_OPERATIONS_ERROR,
@@ -59,7 +59,7 @@ export const addOperation = (data: IAddOperation) => {
             operation: Operation.getAdoptedItem(response.data.operation)
           }
         })
-      }, 500)
+      }, 200)
     } catch (e) {
       dispatch({
         type: OperationActionTypes.ADD_OPERATION_ERROR,
