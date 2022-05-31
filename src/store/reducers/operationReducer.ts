@@ -1,8 +1,15 @@
-import {OperationAction, OperationActionTypes, IOperationState} from "../../types/operation";
+import {
+  OperationAction,
+  OperationActionTypes,
+  IOperationState,
+  IOperation,
+  IOperationsAndOperation
+} from "../../types/operation";
 
 const initialState: IOperationState = {
   operations: [],
   loading: false,
+  btnLoading: false,
   error: null
 }
 
@@ -15,8 +22,12 @@ export const operationReducer = (state: IOperationState = initialState, action: 
     case OperationActionTypes.FETCH_OPERATIONS_ERROR:
       return {...state, loading: false, error: action.payload, operations: []}
 
-    // case OperationActionTypes.ADD_OPERATION: return addOperationCase(state, action.payload)
-    // case OperationActionTypes.ADD_OPERATION_SUCCESS: return addOperationSuccessCase(state, action.payload)
+    case OperationActionTypes.ADD_OPERATION:
+      return {...state, btnLoading: true, error: null}
+    case OperationActionTypes.ADD_OPERATION_SUCCESS:
+      return {...state, btnLoading: false, error: null, operations: action.payload.operations}
+    case OperationActionTypes.ADD_OPERATION_ERROR:
+      return {...state, btnLoading: false, error: null}
 
     case OperationActionTypes.EDIT_OPERATION: return editOperationCase(state, action.payload)
     case OperationActionTypes.EDIT_OPERATION_SUCCESS:
@@ -28,23 +39,16 @@ export const operationReducer = (state: IOperationState = initialState, action: 
     case OperationActionTypes.DELETE_OPERATION_SUCCESS:
       return {...state, loading: false, error: null, operations: [...state.operations].filter(it => it.id !== action.payload.id)}
     case OperationActionTypes.DELETE_OPERATION_ERROR: return deleteOperationErrorCase(state, action.payload)
+
     case OperationActionTypes.RESET_ERROR:
       return {...state, error: null}
     default: return state
   }
 }
 
-// function addOperationCase(state: IOperationState, payload: IOperation): IOperationState {
-//   const operations = [...state.operations]
-//   operations[operations.indexOf(payload)].editBtnLoading = true
-//   return {...state, loading: true, error: null, operations}
-// }
-//
-// function addOperationSuccessCase(state: IOperationState, payload: IOperation): IOperationState {
-//   const operations = [...state.operations]
-//   operations[operations.indexOf(payload)].editBtnLoading = false
-//   return {...state, loading: false, error: null, operations}
-// }
+function addOperationSuccessCase(state: IOperationState, payload: IOperationsAndOperation): IOperationState {
+  return {...state, loading: false, error: null, operations: payload.operations}
+}
 
 function editOperationCase(state: IOperationState, payload: string): IOperationState {
   const operations = [...state.operations]

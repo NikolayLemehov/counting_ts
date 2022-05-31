@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Formik} from "formik";
+import {Form, Formik, FormikHelpers, FormikValues} from "formik";
 import yup from "./validation"
 import MyTextField from "../MyTextField";
 import {useDispatch} from "react-redux";
@@ -7,6 +7,8 @@ import {useDispatch} from "react-redux";
 import DatePicker from "../DatePicker";
 import {formatDate} from "../../utils/formatDate";
 import {Button, Stack} from "@mui/material";
+import {useActions} from "../../hooks/useActions";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
 
 interface IInitialValues {
   value: string
@@ -24,22 +26,25 @@ const validationSchema = yup.object({
 })
 
 const MyForm: React.FC = () => {
-  // const dispatch = useDispatch()
+  const {btnLoading} = useTypedSelector(state => state.operation)
+  const {addOperation} = useActions()
+  const onSubmit = (values: FormikValues, actions: FormikHelpers<IInitialValues>) => {
+    const {date, value} = values
+    addOperation({date, value: +value})
+    // dispatch(addOperation({date, value}))
+    actions.resetForm({
+      values: {
+        value: '',
+        date: formatDate(new Date()),
+      }
+    })
+  }
   return (
     <>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={(values, actions) => {
-          const {date, value} = values
-          // dispatch(addOperation({date, value}))
-          actions.resetForm({
-            values: {
-              value: '',
-              date: formatDate(new Date()),
-            }
-          })
-        }}
+        onSubmit={onSubmit}
       >
         <Form>
           <Stack spacing={2}>
@@ -56,6 +61,7 @@ const MyForm: React.FC = () => {
               <Button
                 type="submit"
                 variant="contained"
+                disabled={btnLoading}
               >Submit</Button>
             </Stack>
           </Stack>

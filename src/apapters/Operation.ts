@@ -2,7 +2,6 @@ import {formatDate} from "../utils/formatDate";
 import {IOperation} from "../types/operation";
 
 
-
 export interface IRawOperation {
   _id: string
   date: Date
