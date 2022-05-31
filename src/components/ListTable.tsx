@@ -21,7 +21,7 @@ const ListTable: React.FC = () => {
   const {fetchOperations, updateOperation, deleteOperation, resetError} = useActions()
   useEffect(() => {
     fetchOperations()
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   if (loading) {
     return <h1>Loading...</h1>
   }
