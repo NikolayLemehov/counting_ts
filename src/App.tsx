@@ -1,14 +1,16 @@
 import React from 'react';
 import ListTable from "./components/ListTable";
-import {Container} from "@mui/material";
+import {Container, Stack, Typography} from "@mui/material";
 import MyForm from "./components/MyForm/MyForm";
 
 function App() {
   return (
     <Container>
-      <h1>Counting (TypeScript)</h1>
-      <MyForm/>
-      <ListTable/>
+      <Stack spacing={2}>
+        <Typography variant="h4" component="div">Counting (TypeScript)</Typography>
+        <MyForm/>
+        <ListTable/>
+      </Stack>
     </Container>
   );
 }
