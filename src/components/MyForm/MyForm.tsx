@@ -55,11 +55,11 @@ const MyForm: React.FC = () => {
                 label="Date"
                 name="date"
               />
-              {/*<MyTextField*/}
-              {/*  label="Rating"*/}
-              {/*  name="rating"*/}
-              {/*/>*/}
-              {/*<FormControlLabel control={<Checkbox defaultChecked />} label="NBU" />*/}
+              <MyTextField
+                label="Rating"
+                name="rating"
+              />
+              <FormControlLabel control={<Checkbox defaultChecked />} label="NBU" />
               <Button
                 type="submit"
                 variant="contained"

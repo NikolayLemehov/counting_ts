@@ -1,25 +1,31 @@
-// import {Dispatch} from "redux";
-// import {OperationAction, OperationActionTypes} from "../../types/operation";
-// import axios from "axios";
-// import {NBU_COURSE_API} from "../../config";
-// import Operation from "../../apapters/Operation";
-// import {formatDate} from "../../utils/formatDate";
+import {Dispatch} from "redux";
+import axios from "axios";
+import {NBU_COURSE_API} from "../../config";
+import {formatDate} from "../../utils/formatDate";
+import {RatingAction, RatingActionTypes} from "../../types/rating";
 
-export const fetchOperations = (date: Date, ) => {
-  // return async (dispatch: Dispatch<OperationAction>) => {
-  //   try {
-  //     dispatch({type: OperationActionTypes.FETCH_OPERATIONS})
-  //     const response = await axios.get<IGetFetchOperationsSuccess>(
-  //       `${NBU_COURSE_API}?valcode=USD&date=${formatDate(debouncedDate)}&json`)
-  //     dispatch({
-  //       type: OperationActionTypes.FETCH_OPERATIONS_SUCCESS,
-  //       payload: Operation.getAdoptedList(response.data.operations)
-  //     })
-  //   } catch (e) {
-  //     dispatch({
-  //       type: OperationActionTypes.FETCH_OPERATIONS_ERROR,
-  //       payload: `Error by operations loading: ${e}`
-  //     })
-  //   }
-  // }
+interface IGetRatingSuccess {
+  rate: number
+  exchangedate: string
+  cc: string
+}
+
+export const fetchRating = (date: Date, ) => {
+  return async (dispatch: Dispatch<RatingAction>) => {
+    try {
+      dispatch({type: RatingActionTypes.FETCH_RATING})
+      const response = await axios.get<IGetRatingSuccess>(
+        `${NBU_COURSE_API}?valcode=USD&date=${formatDate(date, '')}&json`)
+      dispatch({
+        type: RatingActionTypes.FETCH_RATING_SUCCESS,
+        payload: response.data.rate
+      })
+      console.log(response.data)
+    } catch (e) {
+      dispatch({
+        type: RatingActionTypes.FETCH_RATING_ERROR,
+        payload: `Error by loading of NBU rating: ${e}`
+      })
+    }
+  }
 }
