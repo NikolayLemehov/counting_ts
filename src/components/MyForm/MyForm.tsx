@@ -24,7 +24,7 @@ const validationSchema = yup.object({
 })
 
 const MyForm: React.FC = () => {
-  const {btnLoading} = useTypedSelector(state => state.operation)
+  const {operation, rating} = useTypedSelector(state => state)
   const {addOperation} = useActions()
   const onSubmit = (values: FormikValues, actions: FormikHelpers<IInitialValues>) => {
     const {date, value} = values
@@ -58,12 +58,13 @@ const MyForm: React.FC = () => {
               <MyTextField
                 label="Rating"
                 name="rating"
+                value={rating.rating.toString()}
               />
               <FormControlLabel control={<Checkbox defaultChecked />} label="NBU" />
               <Button
                 type="submit"
                 variant="contained"
-                disabled={btnLoading}
+                disabled={operation.btnLoading}
               >Submit</Button>
             </Stack>
           </Stack>

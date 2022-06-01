@@ -14,13 +14,12 @@ export const fetchRating = (date: Date, ) => {
   return async (dispatch: Dispatch<RatingAction>) => {
     try {
       dispatch({type: RatingActionTypes.FETCH_RATING})
-      const response = await axios.get<IGetRatingSuccess>(
+      const response = await axios.get<IGetRatingSuccess[]>(
         `${NBU_COURSE_API}?valcode=USD&date=${formatDate(date, '')}&json`)
       dispatch({
         type: RatingActionTypes.FETCH_RATING_SUCCESS,
-        payload: response.data.rate
+        payload: response.data[0].rate
       })
-      console.log(response.data)
     } catch (e) {
       dispatch({
         type: RatingActionTypes.FETCH_RATING_ERROR,

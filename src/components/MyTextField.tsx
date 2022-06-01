@@ -7,6 +7,7 @@ type MyTextFieldProps = {
   label: string,
   name: string,
   fullWidth?: boolean
+  value?: string
 }
 
 const MyTextField: React.FC<MyTextFieldProps> = (props) => {
