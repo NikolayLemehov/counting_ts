@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/counting_ts/static/js/main.2b9a4ca9.js",
+    "main.js": "/counting_ts/static/js/main.2149a6e3.js",
     "index.html": "/counting_ts/index.html",
-    "main.2b9a4ca9.js.map": "/counting_ts/static/js/main.2b9a4ca9.js.map"
+    "main.2149a6e3.js.map": "/counting_ts/static/js/main.2149a6e3.js.map"
   },
   "entrypoints": [
-    "static/js/main.2b9a4ca9.js"
+    "static/js/main.2149a6e3.js"
   ]
 }
