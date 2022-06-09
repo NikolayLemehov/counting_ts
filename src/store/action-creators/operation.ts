@@ -29,7 +29,7 @@ export const fetchOperations = () => {
   return async (dispatch: Dispatch<OperationAction>) => {
     try {
       dispatch({type: OperationActionTypes.FETCH_OPERATIONS})
-      const response = await axios.get<IGetFetchOperationsSuccess>(`${URL_API}api/operation/list`)
+      const response = await axios.get<IGetFetchOperationsSuccess>(`${URL_API}api/operations`)
       setTimeout(() => {
         dispatch({
           type: OperationActionTypes.FETCH_OPERATIONS_SUCCESS,
@@ -50,7 +50,7 @@ export const addOperation = (data: IAddOperation) => {
     try {
       dispatch({type: OperationActionTypes.ADD_OPERATION})
       const response = await axios.post<IAddOperationSuccess>(
-        `${URL_API}api/operation/item`, data)
+        `${URL_API}api/operations`, data)
       setTimeout(() => {
         dispatch({
           type: OperationActionTypes.ADD_OPERATION_SUCCESS,
@@ -72,7 +72,7 @@ export const addOperation = (data: IAddOperation) => {
 export const updateOperation = (id: string) => {
   return (dispatch: Dispatch<OperationAction>) => {
     dispatch({type: OperationActionTypes.EDIT_OPERATION, payload: id})
-    axios.patch<IGetFetchOperationsSuccess>(`${URL_API}api/operation/item/id`, {data: {id}})
+    axios.patch<IGetFetchOperationsSuccess>(`${URL_API}api/operations/${id}`, {data: {id}})
       .then(res => {
         dispatch({
           type: OperationActionTypes.EDIT_OPERATION_SUCCESS,
@@ -89,7 +89,7 @@ export const updateOperation = (id: string) => {
 export const deleteOperation = (id: string) => {
   return (dispatch: Dispatch<OperationAction>) => {
     dispatch({type: OperationActionTypes.DELETE_OPERATION, payload: id})
-    axios.delete<IDeleteOperationSuccess>(`${URL_API}api/operation/id`, {data: {id}})
+    axios.delete<IDeleteOperationSuccess>(`${URL_API}api/operations/${id}`, {data: {id}})
       .then(res => {
         dispatch({
           type: OperationActionTypes.DELETE_OPERATION_SUCCESS,
