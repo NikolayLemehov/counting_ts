@@ -4,7 +4,7 @@ import {useActions} from "../hooks/useActions";
 
 const OperationList: React.FC = () => {
   const {operations, loading, error} = useTypedSelector(state => state.operation)
-  const {fetchOperations} = useActions()
+  const {fetchOperations} = useActions().operation
   useEffect(() => {
     fetchOperations()
   }, [])

@@ -18,7 +18,7 @@ import { Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
 
 const ListTable: React.FC = () => {
   const {operations, loading, error} = useTypedSelector(state => state.operation)
-  const {fetchOperations, updateOperation, deleteOperation, resetError} = useActions()
+  const {fetchOperations, updateOperation, deleteOperation, resetError} = useActions().operation
   useEffect(() => {
     fetchOperations()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps

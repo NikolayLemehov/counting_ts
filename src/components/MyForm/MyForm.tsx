@@ -25,7 +25,7 @@ const validationSchema = yup.object({
 
 const MyForm: React.FC = () => {
   const {operation, rating} = useTypedSelector(state => state)
-  const {addOperation} = useActions()
+  const {addOperation} = useActions().operation
   const onSubmit = (values: FormikValues, actions: FormikHelpers<IInitialValues>) => {
     const {date, value} = values
     addOperation({date, value: +value})

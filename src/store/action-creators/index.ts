@@ -4,8 +4,8 @@ import * as OperationActionCreators from "./operation"
 import * as RatingActionCreators from "./rating"
 
 export const ActionCreators = {
-  ...UserActionCreators,
-  ...TodoActionCreators,
-  ...OperationActionCreators,
-  ...RatingActionCreators
+  user: UserActionCreators,
+  todo: TodoActionCreators,
+  operation: OperationActionCreators,
+  rating: RatingActionCreators
 }

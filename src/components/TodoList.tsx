@@ -4,7 +4,7 @@ import {useActions} from "../hooks/useActions";
 
 const TodoList: React.FC = () => {
   const {page, error, loading, todos, limit} = useTypedSelector(state => state.todo)
-  const {fetchTodos, setTodoPage} = useActions()
+  const {fetchTodos, setTodoPage} = useActions().todo
   const pages = [1, 2, 3, 4, 5]
 
   useEffect(() => {

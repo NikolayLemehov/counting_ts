@@ -19,7 +19,7 @@ const DatePicker: React.FC<DatePickerProps> = (props) => {
     variant: 'outlined',
     InputLabelProps: {shrink: true},
   };
-  const {fetchRating} = useActions()
+  const {fetchRating} = useActions().rating
   const debouncedFieldValue = useDebounce(field.value, 500)
   useEffect(() => {
     fetchRating(new Date(debouncedFieldValue))
